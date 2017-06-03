@@ -1,0 +1,11 @@
+C:\Users\Rick\Desktop\mod8 tutorials\TaxCalculator\TaxCalculator\obj\Debug\TaxCalculator.csprojResolveAssemblyReference.cache
+C:\Users\Rick\Desktop\mod8 tutorials\TaxCalculator\TaxCalculator\obj\Debug\TaxCalculator.MainPage.resources
+C:\Users\Rick\Desktop\mod8 tutorials\TaxCalculator\TaxCalculator\obj\Debug\TaxCalculator.Properties.Resources.resources
+C:\Users\Rick\Desktop\mod8 tutorials\TaxCalculator\TaxCalculator\obj\Debug\TaxCalculator.csproj.GenerateResource.Cache
+C:\Users\Rick\Desktop\mod8 tutorials\TaxCalculator\TaxCalculator\bin\Debug\TaxCalculator.exe.config
+C:\Users\Rick\Desktop\mod8 tutorials\TaxCalculator\TaxCalculator\bin\Debug\TaxCalculator.exe
+C:\Users\Rick\Desktop\mod8 tutorials\TaxCalculator\TaxCalculator\bin\Debug\TaxCalculator.pdb
+C:\Users\Rick\Desktop\mod8 tutorials\TaxCalculator\TaxCalculator\bin\Debug\itextsharp.dll
+C:\Users\Rick\Desktop\mod8 tutorials\TaxCalculator\TaxCalculator\bin\Debug\itextsharp.xml
+C:\Users\Rick\Desktop\mod8 tutorials\TaxCalculator\TaxCalculator\obj\Debug\TaxCalculator.exe
+C:\Users\Rick\Desktop\mod8 tutorials\TaxCalculator\TaxCalculator\obj\Debug\TaxCalculator.pdb
