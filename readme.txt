@@ -1,0 +1,1 @@
+This is a project for Open Space Colleges. Feel free to use it as you will but do not turn it in as your own work.
