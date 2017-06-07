@@ -191,7 +191,7 @@
             this.btnCrtEmployee.TabIndex = 17;
             this.btnCrtEmployee.Text = "Create Employee";
             this.btnCrtEmployee.UseVisualStyleBackColor = true;
-            this.btnCrtEmployee.Click += new System.EventHandler(this.button4_Click);
+            this.btnCrtEmployee.Click += new System.EventHandler(this.btnCrtEmployee_Click);
             // 
             // btnCrtContractor
             // 
@@ -201,6 +201,7 @@
             this.btnCrtContractor.TabIndex = 18;
             this.btnCrtContractor.Text = "Create Contractor";
             this.btnCrtContractor.UseVisualStyleBackColor = true;
+            this.btnCrtContractor.Click += new System.EventHandler(this.btnCrtContractor_Click);
             // 
             // btnCalEmTax
             // 

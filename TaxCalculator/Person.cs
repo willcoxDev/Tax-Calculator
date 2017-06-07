@@ -125,7 +125,7 @@ namespace TaxCalculator
     class Contractor : Employee
     {
         private decimal hoursWorked;
-        private const decimal taxRate = 0.20; // Never changes so assigned as a Constant, also no need for a set TaxRate.
+        private const decimal taxRate = 0.20M; // Never changes so assigned as a Constant, also no need for a set TaxRate.
 
         public decimal HoursWorked
         {
