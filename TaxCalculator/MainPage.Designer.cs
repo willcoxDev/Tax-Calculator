@@ -213,6 +213,7 @@
             this.btnCalCoTax.TabIndex = 20;
             this.btnCalCoTax.Text = "Calculate Contractor Tax";
             this.btnCalCoTax.UseVisualStyleBackColor = true;
+            this.btnCalCoTax.Click += new System.EventHandler(this.btnCalCoTax_Click);
             // 
             // txtDepartment
             // 

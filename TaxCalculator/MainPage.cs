@@ -116,5 +116,10 @@ namespace TaxCalculator
 
             
         }
+
+        private void btnCalCoTax_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
