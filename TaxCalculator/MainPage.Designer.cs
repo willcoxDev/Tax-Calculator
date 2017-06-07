@@ -39,7 +39,6 @@
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.txtSurname = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtGender = new System.Windows.Forms.TextBox();
             this.txtHoursWork = new System.Windows.Forms.TextBox();
             this.txtEmployeeID = new System.Windows.Forms.TextBox();
             this.txtInformationDisplay = new System.Windows.Forms.TextBox();
@@ -49,6 +48,7 @@
             this.btnCalEmTax = new System.Windows.Forms.Button();
             this.btnCalCoTax = new System.Windows.Forms.Button();
             this.txtDepartment = new System.Windows.Forms.ComboBox();
+            this.txtGender = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // title
@@ -144,13 +144,6 @@
             this.txtEmail.Size = new System.Drawing.Size(247, 38);
             this.txtEmail.TabIndex = 10;
             // 
-            // txtGender
-            // 
-            this.txtGender.Location = new System.Drawing.Point(361, 248);
-            this.txtGender.Name = "txtGender";
-            this.txtGender.Size = new System.Drawing.Size(247, 38);
-            this.txtGender.TabIndex = 11;
-            // 
             // txtHoursWork
             // 
             this.txtHoursWork.Location = new System.Drawing.Point(361, 476);
@@ -234,9 +227,21 @@
             this.txtDepartment.Size = new System.Drawing.Size(247, 39);
             this.txtDepartment.TabIndex = 21;
             // 
+            // txtGender
+            // 
+            this.txtGender.FormattingEnabled = true;
+            this.txtGender.Items.AddRange(new object[] {
+            "Male",
+            "Female"});
+            this.txtGender.Location = new System.Drawing.Point(361, 251);
+            this.txtGender.Name = "txtGender";
+            this.txtGender.Size = new System.Drawing.Size(247, 39);
+            this.txtGender.TabIndex = 22;
+            // 
             // MainPage
             // 
             this.ClientSize = new System.Drawing.Size(1158, 628);
+            this.Controls.Add(this.txtGender);
             this.Controls.Add(this.txtDepartment);
             this.Controls.Add(this.btnCalCoTax);
             this.Controls.Add(this.btnCalEmTax);
@@ -246,7 +251,6 @@
             this.Controls.Add(this.txtInformationDisplay);
             this.Controls.Add(this.txtEmployeeID);
             this.Controls.Add(this.txtHoursWork);
-            this.Controls.Add(this.txtGender);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtSurname);
             this.Controls.Add(this.txtFirstName);
@@ -301,7 +305,6 @@
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtGender;
         private System.Windows.Forms.TextBox txtHoursWork;
         private System.Windows.Forms.TextBox txtEmployeeID;
         private System.Windows.Forms.TextBox txtInformationDisplay;
@@ -311,6 +314,7 @@
         private System.Windows.Forms.Button btnCalEmTax;
         private System.Windows.Forms.Button btnCalCoTax;
         private System.Windows.Forms.ComboBox txtDepartment;
+        private System.Windows.Forms.ComboBox txtGender;
     }
 }
 

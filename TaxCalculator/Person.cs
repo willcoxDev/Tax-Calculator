@@ -74,7 +74,7 @@ namespace TaxCalculator
             }
             set
             {
-                //randomize employeeID here
+                employeeID = value;
             }
         }
         public string Department
