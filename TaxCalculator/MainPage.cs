@@ -70,6 +70,7 @@ namespace TaxCalculator
                 employees[eIndex].EmployeeID = "E" + id;
 
                 txtInformationDisplay.Clear(); //Clear the info display and display new employee
+                txtInformationDisplay.Text += "Employee Created! " +  Environment.NewLine + Environment.NewLine;
                 txtInformationDisplay.Text += "ID: " + employees[eIndex].EmployeeID + Environment.NewLine;
                 txtInformationDisplay.Text += "First name: " + employees[eIndex].FirstName + Environment.NewLine;
                 txtInformationDisplay.Text += "Surname: " + employees[eIndex].Surname + Environment.NewLine;
@@ -102,6 +103,7 @@ namespace TaxCalculator
                 contractors[cIndex].EmployeeID = "C" + id;
 
                 txtInformationDisplay.Clear(); //Clear the info display and display new employee
+                txtInformationDisplay.Text += "Contractor Created! " + Environment.NewLine + Environment.NewLine;
                 txtInformationDisplay.Text += "ID: " + contractors[cIndex].EmployeeID + Environment.NewLine;
                 txtInformationDisplay.Text += "First name: " + contractors[cIndex].FirstName + Environment.NewLine;
                 txtInformationDisplay.Text += "Surname: " + contractors[cIndex].Surname + Environment.NewLine;
@@ -120,6 +122,19 @@ namespace TaxCalculator
         private void btnCalCoTax_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnClearAll_Click(object sender, EventArgs e)
+        {
+            foreach (Control x in this.Controls)
+            {
+                if (x is TextBox)
+                {
+                    ((TextBox)x).Text = String.Empty;
+                }
+            }
+            txtDepartment.SelectedItem = " ";
+            txtGender.SelectedItem = " ";
         }
     }
 }
