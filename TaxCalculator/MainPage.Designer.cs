@@ -54,7 +54,7 @@
             // title
             // 
             this.title.AutoSize = true;
-            this.title.Location = new System.Drawing.Point(781, 65);
+            this.title.Location = new System.Drawing.Point(410, 38);
             this.title.Name = "title";
             this.title.Size = new System.Drawing.Size(198, 32);
             this.title.TabIndex = 0;
@@ -63,7 +63,7 @@
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(273, 177);
+            this.lblFirstName.Location = new System.Drawing.Point(275, 68);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(152, 32);
             this.lblFirstName.TabIndex = 1;
@@ -72,7 +72,7 @@
             // lblSurname
             // 
             this.lblSurname.AutoSize = true;
-            this.lblSurname.Location = new System.Drawing.Point(273, 243);
+            this.lblSurname.Location = new System.Drawing.Point(275, 134);
             this.lblSurname.Name = "lblSurname";
             this.lblSurname.Size = new System.Drawing.Size(130, 32);
             this.lblSurname.TabIndex = 2;
@@ -81,7 +81,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(273, 303);
+            this.lblEmail.Location = new System.Drawing.Point(275, 194);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(87, 32);
             this.lblEmail.TabIndex = 3;
@@ -90,7 +90,7 @@
             // lblGender
             // 
             this.lblGender.AutoSize = true;
-            this.lblGender.Location = new System.Drawing.Point(273, 363);
+            this.lblGender.Location = new System.Drawing.Point(275, 254);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(110, 32);
             this.lblGender.TabIndex = 4;
@@ -99,7 +99,7 @@
             // lblDepartment
             // 
             this.lblDepartment.AutoSize = true;
-            this.lblDepartment.Location = new System.Drawing.Point(273, 423);
+            this.lblDepartment.Location = new System.Drawing.Point(275, 314);
             this.lblDepartment.Name = "lblDepartment";
             this.lblDepartment.Size = new System.Drawing.Size(163, 32);
             this.lblDepartment.TabIndex = 5;
@@ -108,7 +108,7 @@
             // lblEmployeeID
             // 
             this.lblEmployeeID.AutoSize = true;
-            this.lblEmployeeID.Location = new System.Drawing.Point(273, 707);
+            this.lblEmployeeID.Location = new System.Drawing.Point(274, 426);
             this.lblEmployeeID.Name = "lblEmployeeID";
             this.lblEmployeeID.Size = new System.Drawing.Size(176, 32);
             this.lblEmployeeID.TabIndex = 6;
@@ -117,7 +117,7 @@
             // lblHoursWork
             // 
             this.lblHoursWork.AutoSize = true;
-            this.lblHoursWork.Location = new System.Drawing.Point(273, 763);
+            this.lblHoursWork.Location = new System.Drawing.Point(274, 482);
             this.lblHoursWork.Name = "lblHoursWork";
             this.lblHoursWork.Size = new System.Drawing.Size(194, 32);
             this.lblHoursWork.TabIndex = 7;
@@ -125,58 +125,58 @@
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(550, 180);
+            this.txtFirstName.Location = new System.Drawing.Point(361, 68);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(188, 38);
+            this.txtFirstName.Size = new System.Drawing.Size(247, 38);
             this.txtFirstName.TabIndex = 8;
             // 
             // txtSurname
             // 
-            this.txtSurname.Location = new System.Drawing.Point(550, 240);
+            this.txtSurname.Location = new System.Drawing.Point(361, 128);
             this.txtSurname.Name = "txtSurname";
-            this.txtSurname.Size = new System.Drawing.Size(188, 38);
+            this.txtSurname.Size = new System.Drawing.Size(247, 38);
             this.txtSurname.TabIndex = 9;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(550, 300);
+            this.txtEmail.Location = new System.Drawing.Point(361, 188);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(188, 38);
+            this.txtEmail.Size = new System.Drawing.Size(247, 38);
             this.txtEmail.TabIndex = 10;
             // 
             // txtGender
             // 
-            this.txtGender.Location = new System.Drawing.Point(550, 360);
+            this.txtGender.Location = new System.Drawing.Point(361, 248);
             this.txtGender.Name = "txtGender";
-            this.txtGender.Size = new System.Drawing.Size(188, 38);
+            this.txtGender.Size = new System.Drawing.Size(247, 38);
             this.txtGender.TabIndex = 11;
             // 
             // txtHoursWork
             // 
-            this.txtHoursWork.Location = new System.Drawing.Point(551, 760);
+            this.txtHoursWork.Location = new System.Drawing.Point(361, 476);
             this.txtHoursWork.Name = "txtHoursWork";
-            this.txtHoursWork.Size = new System.Drawing.Size(188, 38);
+            this.txtHoursWork.Size = new System.Drawing.Size(247, 38);
             this.txtHoursWork.TabIndex = 13;
             // 
             // txtEmployeeID
             // 
-            this.txtEmployeeID.Location = new System.Drawing.Point(551, 700);
+            this.txtEmployeeID.Location = new System.Drawing.Point(361, 416);
             this.txtEmployeeID.Name = "txtEmployeeID";
-            this.txtEmployeeID.Size = new System.Drawing.Size(188, 38);
+            this.txtEmployeeID.Size = new System.Drawing.Size(247, 38);
             this.txtEmployeeID.TabIndex = 14;
             // 
             // txtInformationDisplay
             // 
-            this.txtInformationDisplay.Location = new System.Drawing.Point(966, 612);
+            this.txtInformationDisplay.Location = new System.Drawing.Point(756, 134);
             this.txtInformationDisplay.Multiline = true;
             this.txtInformationDisplay.Name = "txtInformationDisplay";
-            this.txtInformationDisplay.Size = new System.Drawing.Size(748, 416);
+            this.txtInformationDisplay.Size = new System.Drawing.Size(353, 380);
             this.txtInformationDisplay.TabIndex = 15;
             // 
             // lblInformationDisplay
             // 
             this.lblInformationDisplay.AutoSize = true;
-            this.lblInformationDisplay.Location = new System.Drawing.Point(1223, 548);
+            this.lblInformationDisplay.Location = new System.Drawing.Point(799, 78);
             this.lblInformationDisplay.Name = "lblInformationDisplay";
             this.lblInformationDisplay.Size = new System.Drawing.Size(258, 32);
             this.lblInformationDisplay.TabIndex = 16;
@@ -184,9 +184,9 @@
             // 
             // btnCrtEmployee
             // 
-            this.btnCrtEmployee.Location = new System.Drawing.Point(76, 185);
+            this.btnCrtEmployee.Location = new System.Drawing.Point(65, 134);
             this.btnCrtEmployee.Name = "btnCrtEmployee";
-            this.btnCrtEmployee.Size = new System.Drawing.Size(180, 90);
+            this.btnCrtEmployee.Size = new System.Drawing.Size(158, 37);
             this.btnCrtEmployee.TabIndex = 17;
             this.btnCrtEmployee.Text = "Create Employee";
             this.btnCrtEmployee.UseVisualStyleBackColor = true;
@@ -194,27 +194,27 @@
             // 
             // btnCrtContractor
             // 
-            this.btnCrtContractor.Location = new System.Drawing.Point(76, 300);
+            this.btnCrtContractor.Location = new System.Drawing.Point(65, 188);
             this.btnCrtContractor.Name = "btnCrtContractor";
-            this.btnCrtContractor.Size = new System.Drawing.Size(180, 90);
+            this.btnCrtContractor.Size = new System.Drawing.Size(158, 37);
             this.btnCrtContractor.TabIndex = 18;
             this.btnCrtContractor.Text = "Create Contractor";
             this.btnCrtContractor.UseVisualStyleBackColor = true;
             // 
             // btnCalEmTax
             // 
-            this.btnCalEmTax.Location = new System.Drawing.Point(76, 679);
+            this.btnCalEmTax.Location = new System.Drawing.Point(39, 426);
             this.btnCalEmTax.Name = "btnCalEmTax";
-            this.btnCalEmTax.Size = new System.Drawing.Size(180, 125);
+            this.btnCalEmTax.Size = new System.Drawing.Size(203, 38);
             this.btnCalEmTax.TabIndex = 19;
             this.btnCalEmTax.Text = "Calculate Employee Tax";
             this.btnCalEmTax.UseVisualStyleBackColor = true;
             // 
             // btnCalCoTax
             // 
-            this.btnCalCoTax.Location = new System.Drawing.Point(76, 826);
+            this.btnCalCoTax.Location = new System.Drawing.Point(39, 478);
             this.btnCalCoTax.Name = "btnCalCoTax";
-            this.btnCalCoTax.Size = new System.Drawing.Size(180, 125);
+            this.btnCalCoTax.Size = new System.Drawing.Size(203, 38);
             this.btnCalCoTax.TabIndex = 20;
             this.btnCalCoTax.Text = "Calculate Contractor Tax";
             this.btnCalCoTax.UseVisualStyleBackColor = true;
@@ -227,14 +227,14 @@
             "Customer Service",
             "IT",
             "Administtration"});
-            this.txtDepartment.Location = new System.Drawing.Point(550, 420);
+            this.txtDepartment.Location = new System.Drawing.Point(361, 308);
             this.txtDepartment.Name = "txtDepartment";
-            this.txtDepartment.Size = new System.Drawing.Size(188, 39);
+            this.txtDepartment.Size = new System.Drawing.Size(247, 39);
             this.txtDepartment.TabIndex = 21;
             // 
             // MainPage
             // 
-            this.ClientSize = new System.Drawing.Size(1819, 1098);
+            this.ClientSize = new System.Drawing.Size(1158, 628);
             this.Controls.Add(this.txtDepartment);
             this.Controls.Add(this.btnCalCoTax);
             this.Controls.Add(this.btnCalEmTax);
@@ -256,7 +256,10 @@
             this.Controls.Add(this.lblSurname);
             this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.title);
+            this.MaximumSize = new System.Drawing.Size(1190, 716);
+            this.MinimumSize = new System.Drawing.Size(1190, 716);
             this.Name = "MainPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
             this.PerformLayout();
 
