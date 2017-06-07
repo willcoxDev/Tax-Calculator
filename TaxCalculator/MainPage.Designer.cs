@@ -164,6 +164,7 @@
             this.txtEmployeeID.Name = "txtEmployeeID";
             this.txtEmployeeID.Size = new System.Drawing.Size(247, 38);
             this.txtEmployeeID.TabIndex = 14;
+            this.txtEmployeeID.TextChanged += new System.EventHandler(this.txtEmployeeID_TextChanged);
             // 
             // txtInformationDisplay
             // 

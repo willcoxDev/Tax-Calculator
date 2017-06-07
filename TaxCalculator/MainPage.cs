@@ -27,5 +27,10 @@ namespace TaxCalculator
         {
 
         }
+
+        private void txtEmployeeID_TextChanged(object sender, EventArgs e)
+        {
+            txtHoursWork.Visible = false;
+        }
     }
 }
