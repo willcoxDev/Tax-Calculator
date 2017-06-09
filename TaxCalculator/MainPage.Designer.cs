@@ -51,6 +51,10 @@
             this.txtGender = new System.Windows.Forms.ComboBox();
             this.btnClearAll = new System.Windows.Forms.Button();
             this.saveFilePath = new System.Windows.Forms.SaveFileDialog();
+            this.btnQuickFill = new System.Windows.Forms.Button();
+            this.btnFillSally = new System.Windows.Forms.Button();
+            this.btnFillGreg = new System.Windows.Forms.Button();
+            this.btnFillHarry = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // title
@@ -225,7 +229,7 @@
             "Accounts",
             "Customer Service",
             "IT",
-            "Administtration",
+            "Administration",
             " "});
             this.txtDepartment.Location = new System.Drawing.Point(361, 340);
             this.txtDepartment.Name = "txtDepartment";
@@ -254,9 +258,53 @@
             this.btnClearAll.UseVisualStyleBackColor = true;
             this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
             // 
+            // btnQuickFill
+            // 
+            this.btnQuickFill.Location = new System.Drawing.Point(12, 278);
+            this.btnQuickFill.Name = "btnQuickFill";
+            this.btnQuickFill.Size = new System.Drawing.Size(158, 37);
+            this.btnQuickFill.TabIndex = 24;
+            this.btnQuickFill.Text = "Quick Fill Rick";
+            this.btnQuickFill.UseVisualStyleBackColor = true;
+            this.btnQuickFill.Click += new System.EventHandler(this.btnQuickFill_Click);
+            // 
+            // btnFillSally
+            // 
+            this.btnFillSally.Location = new System.Drawing.Point(12, 321);
+            this.btnFillSally.Name = "btnFillSally";
+            this.btnFillSally.Size = new System.Drawing.Size(158, 37);
+            this.btnFillSally.TabIndex = 25;
+            this.btnFillSally.Text = "Quick Fill Sally";
+            this.btnFillSally.UseVisualStyleBackColor = true;
+            this.btnFillSally.Click += new System.EventHandler(this.btnFillSally_Click);
+            // 
+            // btnFillGreg
+            // 
+            this.btnFillGreg.Location = new System.Drawing.Point(12, 364);
+            this.btnFillGreg.Name = "btnFillGreg";
+            this.btnFillGreg.Size = new System.Drawing.Size(158, 37);
+            this.btnFillGreg.TabIndex = 26;
+            this.btnFillGreg.Text = "Quick Fill Greg";
+            this.btnFillGreg.UseVisualStyleBackColor = true;
+            this.btnFillGreg.Click += new System.EventHandler(this.btnFillGreg_Click);
+            // 
+            // btnFillHarry
+            // 
+            this.btnFillHarry.Location = new System.Drawing.Point(12, 407);
+            this.btnFillHarry.Name = "btnFillHarry";
+            this.btnFillHarry.Size = new System.Drawing.Size(158, 37);
+            this.btnFillHarry.TabIndex = 27;
+            this.btnFillHarry.Text = "Quick Fill Harry";
+            this.btnFillHarry.UseVisualStyleBackColor = true;
+            this.btnFillHarry.Click += new System.EventHandler(this.btnFillHarry_Click);
+            // 
             // MainPage
             // 
             this.ClientSize = new System.Drawing.Size(1158, 628);
+            this.Controls.Add(this.btnFillHarry);
+            this.Controls.Add(this.btnFillGreg);
+            this.Controls.Add(this.btnFillSally);
+            this.Controls.Add(this.btnQuickFill);
             this.Controls.Add(this.btnClearAll);
             this.Controls.Add(this.txtGender);
             this.Controls.Add(this.txtDepartment);
@@ -334,6 +382,10 @@
         private System.Windows.Forms.ComboBox txtGender;
         private System.Windows.Forms.Button btnClearAll;
         private System.Windows.Forms.SaveFileDialog saveFilePath;
+        private System.Windows.Forms.Button btnQuickFill;
+        private System.Windows.Forms.Button btnFillSally;
+        private System.Windows.Forms.Button btnFillGreg;
+        private System.Windows.Forms.Button btnFillHarry;
     }
 }
 

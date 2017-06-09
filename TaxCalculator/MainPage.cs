@@ -127,7 +127,11 @@ namespace TaxCalculator
 
         private void btnCalCoTax_Click(object sender, EventArgs e)
         {
-            saveFilePath.FileName = "Tax Report " + contractors[0].EmployeeID + " " + contractors[0].FirstName + " " + contractors[0].Surname; //setting the file name to ID + Name
+
+            var index = Array.FindIndex(contractors, a => a.EmployeeID == txtEmployeeID.Text); //getting the index of the contractors array that matches the employeeID entered
+
+
+            saveFilePath.FileName = "Tax Report " + contractors[index].EmployeeID + " " + contractors[index].FirstName + " " + contractors[index].Surname; //setting the file name to ID + Name
             saveFilePath.Filter = "PDF files (*.pdf)|*.pdf|All files (*.*)|*.*";
             saveFilePath.DefaultExt = "pdf";
             saveFilePath.ShowDialog();
@@ -135,7 +139,7 @@ namespace TaxCalculator
 
             string pdfTemplate = @"C:\Users\Rick\Desktop\tax calculator\Tax-Calculator\taxTemplate.pdf";
   
-            string fullName = contractors[0].FirstName + " " + contractors[0].Surname;
+            string fullName = contractors[index].FirstName + " " + contractors[index].Surname;
 
 
 
@@ -143,9 +147,9 @@ namespace TaxCalculator
             PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileStream(newFile, FileMode.Create));
             AcroFields pdfFormFields = pdfStamper.AcroFields;
             
-            pdfFormFields.SetField("EmployeeID", contractors[0].EmployeeID);
+            pdfFormFields.SetField("EmployeeID", contractors[index].EmployeeID);
             pdfFormFields.SetField("Name", fullName);
-            pdfFormFields.SetField("Department", contractors[0].Department);
+            pdfFormFields.SetField("Department", contractors[index].Department);
             pdfFormFields.SetField("Salary", "$40,000,000");
             pdfFormFields.SetField("TaxPayable", "$2");
             // flatten the form to remove editting options, set it to false
@@ -167,6 +171,43 @@ namespace TaxCalculator
             }
             txtDepartment.SelectedItem = " ";
             txtGender.SelectedItem = " ";
+        }
+
+        private void btnQuickFill_Click(object sender, EventArgs e)
+        {
+            txtFirstName.Text = "Rick";
+            txtSurname.Text = "Willcox";
+            txtEmail.Text = "rickwillcoxau@outlook.com";
+            txtDepartment.Text = "IT";
+            txtGender.Text = "Male";
+
+        }
+
+        private void btnFillSally_Click(object sender, EventArgs e)
+        {
+            txtFirstName.Text = "Sally";
+            txtSurname.Text = "Summers";
+            txtEmail.Text = "ss@outlook.com";
+            txtDepartment.Text = "Administration";
+            txtGender.Text = "Female";
+        }
+
+        private void btnFillGreg_Click(object sender, EventArgs e)
+        {
+            txtFirstName.Text = "Greg";
+            txtSurname.Text = "Wialker";
+            txtEmail.Text = "GregWialker@outlook.com";
+            txtDepartment.Text = "Customer Service";
+            txtGender.Text = "Male";
+        }
+
+        private void btnFillHarry_Click(object sender, EventArgs e)
+        {
+            txtFirstName.Text = "Harry";
+            txtSurname.Text = "Willcox";
+            txtEmail.Text = "HarryWillcox@outlook.com";
+            txtDepartment.Text = "Accounts";
+            txtGender.Text = "Male";
         }
     }
 }
