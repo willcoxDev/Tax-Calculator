@@ -50,6 +50,7 @@
             this.txtDepartment = new System.Windows.Forms.ComboBox();
             this.txtGender = new System.Windows.Forms.ComboBox();
             this.btnClearAll = new System.Windows.Forms.Button();
+            this.saveFilePath = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // title
@@ -58,7 +59,7 @@
             this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.title.Location = new System.Drawing.Point(527, 35);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(130, 24);
+            this.title.Size = new System.Drawing.Size(325, 54);
             this.title.TabIndex = 0;
             this.title.Text = "Tax Calculator";
             // 
@@ -67,7 +68,7 @@
             this.lblFirstName.AutoSize = true;
             this.lblFirstName.Location = new System.Drawing.Point(275, 97);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(57, 13);
+            this.lblFirstName.Size = new System.Drawing.Size(152, 32);
             this.lblFirstName.TabIndex = 1;
             this.lblFirstName.Text = "First Name";
             // 
@@ -76,7 +77,7 @@
             this.lblSurname.AutoSize = true;
             this.lblSurname.Location = new System.Drawing.Point(275, 163);
             this.lblSurname.Name = "lblSurname";
-            this.lblSurname.Size = new System.Drawing.Size(49, 13);
+            this.lblSurname.Size = new System.Drawing.Size(130, 32);
             this.lblSurname.TabIndex = 2;
             this.lblSurname.Text = "Surname";
             // 
@@ -85,7 +86,7 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.Location = new System.Drawing.Point(275, 223);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(32, 13);
+            this.lblEmail.Size = new System.Drawing.Size(87, 32);
             this.lblEmail.TabIndex = 3;
             this.lblEmail.Text = "Email";
             // 
@@ -94,7 +95,7 @@
             this.lblGender.AutoSize = true;
             this.lblGender.Location = new System.Drawing.Point(275, 283);
             this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(42, 13);
+            this.lblGender.Size = new System.Drawing.Size(110, 32);
             this.lblGender.TabIndex = 4;
             this.lblGender.Text = "Gender";
             // 
@@ -103,7 +104,7 @@
             this.lblDepartment.AutoSize = true;
             this.lblDepartment.Location = new System.Drawing.Point(275, 343);
             this.lblDepartment.Name = "lblDepartment";
-            this.lblDepartment.Size = new System.Drawing.Size(62, 13);
+            this.lblDepartment.Size = new System.Drawing.Size(163, 32);
             this.lblDepartment.TabIndex = 5;
             this.lblDepartment.Text = "Department";
             // 
@@ -112,7 +113,7 @@
             this.lblEmployeeID.AutoSize = true;
             this.lblEmployeeID.Location = new System.Drawing.Point(274, 500);
             this.lblEmployeeID.Name = "lblEmployeeID";
-            this.lblEmployeeID.Size = new System.Drawing.Size(67, 13);
+            this.lblEmployeeID.Size = new System.Drawing.Size(176, 32);
             this.lblEmployeeID.TabIndex = 6;
             this.lblEmployeeID.Text = "Employee ID";
             // 
@@ -121,7 +122,7 @@
             this.lblHoursWork.AutoSize = true;
             this.lblHoursWork.Location = new System.Drawing.Point(274, 556);
             this.lblHoursWork.Name = "lblHoursWork";
-            this.lblHoursWork.Size = new System.Drawing.Size(76, 13);
+            this.lblHoursWork.Size = new System.Drawing.Size(194, 32);
             this.lblHoursWork.TabIndex = 7;
             this.lblHoursWork.Text = "Hours Worked";
             // 
@@ -129,35 +130,35 @@
             // 
             this.txtFirstName.Location = new System.Drawing.Point(361, 94);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(247, 20);
+            this.txtFirstName.Size = new System.Drawing.Size(247, 38);
             this.txtFirstName.TabIndex = 8;
             // 
             // txtSurname
             // 
             this.txtSurname.Location = new System.Drawing.Point(361, 160);
             this.txtSurname.Name = "txtSurname";
-            this.txtSurname.Size = new System.Drawing.Size(247, 20);
+            this.txtSurname.Size = new System.Drawing.Size(247, 38);
             this.txtSurname.TabIndex = 9;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(361, 220);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(247, 20);
+            this.txtEmail.Size = new System.Drawing.Size(247, 38);
             this.txtEmail.TabIndex = 10;
             // 
             // txtHoursWork
             // 
             this.txtHoursWork.Location = new System.Drawing.Point(361, 556);
             this.txtHoursWork.Name = "txtHoursWork";
-            this.txtHoursWork.Size = new System.Drawing.Size(247, 20);
+            this.txtHoursWork.Size = new System.Drawing.Size(247, 38);
             this.txtHoursWork.TabIndex = 13;
             // 
             // txtEmployeeID
             // 
             this.txtEmployeeID.Location = new System.Drawing.Point(361, 497);
             this.txtEmployeeID.Name = "txtEmployeeID";
-            this.txtEmployeeID.Size = new System.Drawing.Size(247, 20);
+            this.txtEmployeeID.Size = new System.Drawing.Size(247, 38);
             this.txtEmployeeID.TabIndex = 14;
             this.txtEmployeeID.TextChanged += new System.EventHandler(this.txtEmployeeID_TextChanged);
             // 
@@ -174,7 +175,7 @@
             this.lblInformationDisplay.AutoSize = true;
             this.lblInformationDisplay.Location = new System.Drawing.Point(857, 175);
             this.lblInformationDisplay.Name = "lblInformationDisplay";
-            this.lblInformationDisplay.Size = new System.Drawing.Size(96, 13);
+            this.lblInformationDisplay.Size = new System.Drawing.Size(258, 32);
             this.lblInformationDisplay.TabIndex = 16;
             this.lblInformationDisplay.Text = "Information Display";
             // 
@@ -228,7 +229,7 @@
             " "});
             this.txtDepartment.Location = new System.Drawing.Point(361, 340);
             this.txtDepartment.Name = "txtDepartment";
-            this.txtDepartment.Size = new System.Drawing.Size(247, 21);
+            this.txtDepartment.Size = new System.Drawing.Size(247, 39);
             this.txtDepartment.TabIndex = 21;
             // 
             // txtGender
@@ -240,7 +241,7 @@
             " "});
             this.txtGender.Location = new System.Drawing.Point(361, 280);
             this.txtGender.Name = "txtGender";
-            this.txtGender.Size = new System.Drawing.Size(247, 21);
+            this.txtGender.Size = new System.Drawing.Size(247, 39);
             this.txtGender.TabIndex = 22;
             // 
             // btnClearAll
@@ -255,7 +256,7 @@
             // 
             // MainPage
             // 
-            this.ClientSize = new System.Drawing.Size(1174, 677);
+            this.ClientSize = new System.Drawing.Size(1158, 628);
             this.Controls.Add(this.btnClearAll);
             this.Controls.Add(this.txtGender);
             this.Controls.Add(this.txtDepartment);
@@ -332,6 +333,7 @@
         private System.Windows.Forms.ComboBox txtDepartment;
         private System.Windows.Forms.ComboBox txtGender;
         private System.Windows.Forms.Button btnClearAll;
+        private System.Windows.Forms.SaveFileDialog saveFilePath;
     }
 }
 

@@ -7,6 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text.pdf;
+using iTextSharp;
+using iTextSharp.text;
+using System.IO;
+
+
 
 namespace TaxCalculator
 {
@@ -121,7 +127,33 @@ namespace TaxCalculator
 
         private void btnCalCoTax_Click(object sender, EventArgs e)
         {
+            saveFilePath.FileName = "Tax Report " + contractors[0].EmployeeID + " " + contractors[0].FirstName + " " + contractors[0].Surname; //setting the file name to ID + Name
+            saveFilePath.Filter = "PDF files (*.pdf)|*.pdf|All files (*.*)|*.*";
+            saveFilePath.DefaultExt = "pdf";
+            saveFilePath.ShowDialog();
+            string newFile = saveFilePath.FileName;            
 
+            string pdfTemplate = @"C:\Users\Rick\Desktop\tax calculator\Tax-Calculator\taxTemplate.pdf";
+  
+            string fullName = contractors[0].FirstName + " " + contractors[0].Surname;
+
+
+
+            PdfReader pdfReader = new PdfReader(pdfTemplate);
+            PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileStream(newFile, FileMode.Create));
+            AcroFields pdfFormFields = pdfStamper.AcroFields;
+            
+            pdfFormFields.SetField("EmployeeID", contractors[0].EmployeeID);
+            pdfFormFields.SetField("Name", fullName);
+            pdfFormFields.SetField("Department", contractors[0].Department);
+            pdfFormFields.SetField("Salary", "$40,000,000");
+            pdfFormFields.SetField("TaxPayable", "$2");
+            // flatten the form to remove editting options, set it to false
+            // to leave the form open to subsequent manual edits
+            pdfStamper.FormFlattening = true;
+
+            // close the pdf
+            pdfStamper.Close();
         }
 
         private void btnClearAll_Click(object sender, EventArgs e)
