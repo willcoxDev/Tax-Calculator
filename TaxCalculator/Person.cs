@@ -107,7 +107,7 @@ namespace TaxCalculator
             }
             set
             {
-                hourlyRate = value; //might need to be changed. Are they fixed??
+                hourlyRate = value;
             }
         }
         public decimal TaxRate

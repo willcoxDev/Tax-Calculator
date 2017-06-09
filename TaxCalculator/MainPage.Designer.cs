@@ -51,10 +51,12 @@
             this.txtGender = new System.Windows.Forms.ComboBox();
             this.btnClearAll = new System.Windows.Forms.Button();
             this.saveFilePath = new System.Windows.Forms.SaveFileDialog();
-            this.btnQuickFill = new System.Windows.Forms.Button();
+            this.btnFillRick = new System.Windows.Forms.Button();
             this.btnFillSally = new System.Windows.Forms.Button();
             this.btnFillGreg = new System.Windows.Forms.Button();
             this.btnFillHarry = new System.Windows.Forms.Button();
+            this.txtHourlyRate = new System.Windows.Forms.TextBox();
+            this.lblHourlyRate = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // title
@@ -70,7 +72,7 @@
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(275, 97);
+            this.lblFirstName.Location = new System.Drawing.Point(274, 97);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(152, 32);
             this.lblFirstName.TabIndex = 1;
@@ -79,7 +81,7 @@
             // lblSurname
             // 
             this.lblSurname.AutoSize = true;
-            this.lblSurname.Location = new System.Drawing.Point(275, 163);
+            this.lblSurname.Location = new System.Drawing.Point(274, 163);
             this.lblSurname.Name = "lblSurname";
             this.lblSurname.Size = new System.Drawing.Size(130, 32);
             this.lblSurname.TabIndex = 2;
@@ -88,7 +90,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(275, 223);
+            this.lblEmail.Location = new System.Drawing.Point(274, 223);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(87, 32);
             this.lblEmail.TabIndex = 3;
@@ -97,7 +99,7 @@
             // lblGender
             // 
             this.lblGender.AutoSize = true;
-            this.lblGender.Location = new System.Drawing.Point(275, 283);
+            this.lblGender.Location = new System.Drawing.Point(274, 283);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(110, 32);
             this.lblGender.TabIndex = 4;
@@ -106,7 +108,7 @@
             // lblDepartment
             // 
             this.lblDepartment.AutoSize = true;
-            this.lblDepartment.Location = new System.Drawing.Point(275, 343);
+            this.lblDepartment.Location = new System.Drawing.Point(274, 343);
             this.lblDepartment.Name = "lblDepartment";
             this.lblDepartment.Size = new System.Drawing.Size(163, 32);
             this.lblDepartment.TabIndex = 5;
@@ -258,15 +260,15 @@
             this.btnClearAll.UseVisualStyleBackColor = true;
             this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
             // 
-            // btnQuickFill
+            // btnFillRick
             // 
-            this.btnQuickFill.Location = new System.Drawing.Point(12, 278);
-            this.btnQuickFill.Name = "btnQuickFill";
-            this.btnQuickFill.Size = new System.Drawing.Size(158, 37);
-            this.btnQuickFill.TabIndex = 24;
-            this.btnQuickFill.Text = "Quick Fill Rick";
-            this.btnQuickFill.UseVisualStyleBackColor = true;
-            this.btnQuickFill.Click += new System.EventHandler(this.btnQuickFill_Click);
+            this.btnFillRick.Location = new System.Drawing.Point(12, 278);
+            this.btnFillRick.Name = "btnFillRick";
+            this.btnFillRick.Size = new System.Drawing.Size(158, 37);
+            this.btnFillRick.TabIndex = 24;
+            this.btnFillRick.Text = "Quick Fill Rick";
+            this.btnFillRick.UseVisualStyleBackColor = true;
+            this.btnFillRick.Click += new System.EventHandler(this.btnFillRick_Click);
             // 
             // btnFillSally
             // 
@@ -298,13 +300,32 @@
             this.btnFillHarry.UseVisualStyleBackColor = true;
             this.btnFillHarry.Click += new System.EventHandler(this.btnFillHarry_Click);
             // 
+            // txtHourlyRate
+            // 
+            this.txtHourlyRate.Location = new System.Drawing.Point(361, 400);
+            this.txtHourlyRate.Name = "txtHourlyRate";
+            this.txtHourlyRate.Size = new System.Drawing.Size(247, 38);
+            this.txtHourlyRate.TabIndex = 28;
+            this.txtHourlyRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHourlyRate_KeyPress);
+            // 
+            // lblHourlyRate
+            // 
+            this.lblHourlyRate.AutoSize = true;
+            this.lblHourlyRate.Location = new System.Drawing.Point(274, 403);
+            this.lblHourlyRate.Name = "lblHourlyRate";
+            this.lblHourlyRate.Size = new System.Drawing.Size(222, 32);
+            this.lblHourlyRate.TabIndex = 29;
+            this.lblHourlyRate.Text = "Hourly Rate      $";
+            // 
             // MainPage
             // 
             this.ClientSize = new System.Drawing.Size(1158, 628);
+            this.Controls.Add(this.lblHourlyRate);
+            this.Controls.Add(this.txtHourlyRate);
             this.Controls.Add(this.btnFillHarry);
             this.Controls.Add(this.btnFillGreg);
             this.Controls.Add(this.btnFillSally);
-            this.Controls.Add(this.btnQuickFill);
+            this.Controls.Add(this.btnFillRick);
             this.Controls.Add(this.btnClearAll);
             this.Controls.Add(this.txtGender);
             this.Controls.Add(this.txtDepartment);
@@ -382,10 +403,12 @@
         private System.Windows.Forms.ComboBox txtGender;
         private System.Windows.Forms.Button btnClearAll;
         private System.Windows.Forms.SaveFileDialog saveFilePath;
-        private System.Windows.Forms.Button btnQuickFill;
+        private System.Windows.Forms.Button btnFillRick;
         private System.Windows.Forms.Button btnFillSally;
         private System.Windows.Forms.Button btnFillGreg;
         private System.Windows.Forms.Button btnFillHarry;
+        private System.Windows.Forms.TextBox txtHourlyRate;
+        private System.Windows.Forms.Label lblHourlyRate;
     }
 }
 

@@ -45,7 +45,7 @@ namespace TaxCalculator
 
         private void txtEmployeeID_TextChanged(object sender, EventArgs e)
         {
-            if(txtEmployeeID.Text.ToLower().StartsWith("e")) // checking to see if the employee ID starts with e or E. 
+            if(txtEmployeeID.Text.ToLower().StartsWith("c")) // checking to see if the employee ID starts with e or E. 
             {
                 txtHoursWork.Visible = true; //sett the hours worked info to visible if true.
                 lblHoursWork.Visible = true;
@@ -60,7 +60,7 @@ namespace TaxCalculator
 
         private void btnCrtEmployee_Click(object sender, EventArgs e)
         {
-            if (txtFirstName.Text == String.Empty || txtSurname.Text == String.Empty || txtEmail.Text == String.Empty || txtGender.Text == String.Empty || txtDepartment.Text == String.Empty)
+            if (txtFirstName.Text == String.Empty || txtSurname.Text == String.Empty || txtEmail.Text == String.Empty || txtGender.Text == String.Empty || txtDepartment.Text == String.Empty || txtHourlyRate.Text != String.Empty)
             {
                 MessageBox.Show("Employee entry failed! \nPlease make sure all fields are filled out\nclick Create Employee once the issue is rectified");
             }
@@ -74,6 +74,7 @@ namespace TaxCalculator
                 employees[eIndex].Gender = txtGender.Text;
                 employees[eIndex].Department = txtDepartment.Text;
                 employees[eIndex].EmployeeID = "E" + id;
+                employees[eIndex].HourlyRate = int.Parse(txtHourlyRate.Text);
 
                 txtInformationDisplay.Clear(); //Clear the info display and display new employee
                 txtInformationDisplay.Text += "Employee Created! " +  Environment.NewLine + Environment.NewLine;
@@ -82,7 +83,8 @@ namespace TaxCalculator
                 txtInformationDisplay.Text += "Surname: " + employees[eIndex].Surname + Environment.NewLine;
                 txtInformationDisplay.Text += "Email: " + employees[eIndex].Email + Environment.NewLine;
                 txtInformationDisplay.Text += "Gender: " + employees[eIndex].Gender + Environment.NewLine;
-                txtInformationDisplay.Text += "Department: " + employees[eIndex].Department;
+                txtInformationDisplay.Text += "Department: " + employees[eIndex].Department + Environment.NewLine;
+                txtInformationDisplay.Text += "Hourly Rate: $" + employees[eIndex].HourlyRate;
 
                 eIndex++; //setting the index to +1 for the next time another employee is created.
                 id++; //makes the ID go up by 1 each time.
@@ -93,7 +95,7 @@ namespace TaxCalculator
         private void btnCrtContractor_Click(object sender, EventArgs e)
         {
 
-            if(txtFirstName.Text == String.Empty || txtSurname.Text == String.Empty || txtEmail.Text == String.Empty || txtGender.Text == String.Empty || txtDepartment.Text == String.Empty)
+            if(txtFirstName.Text == String.Empty || txtSurname.Text == String.Empty || txtEmail.Text == String.Empty || txtGender.Text == String.Empty || txtDepartment.Text == String.Empty || txtHourlyRate.Text == String.Empty)
             {
                 MessageBox.Show("Contractor entry failed! \nPlease make sure all fields are filled out\nclick Create Contractor once the issue is rectified");
             }
@@ -116,6 +118,7 @@ namespace TaxCalculator
                 txtInformationDisplay.Text += "Email: " + contractors[cIndex].Email + Environment.NewLine;
                 txtInformationDisplay.Text += "Gender: " + contractors[cIndex].Gender + Environment.NewLine;
                 txtInformationDisplay.Text += "Department: " + contractors[cIndex].Department + Environment.NewLine;
+                txtInformationDisplay.Text += "Hourly Rate: $" + contractors[cIndex].HourlyRate + Environment.NewLine;
                 txtInformationDisplay.Text += "Tax Rate: " + (contractors[cIndex].TaxRate * 100) + "%";
 
                 cIndex++; //setting the index to +1 for the next time another contractors is created.
@@ -137,7 +140,7 @@ namespace TaxCalculator
             saveFilePath.ShowDialog();
             string newFile = saveFilePath.FileName;            
 
-            string pdfTemplate = @"C:\Users\Rick\Desktop\tax calculator\Tax-Calculator\taxTemplate.pdf";
+            string pdfTemplate = @"C:\Users\Rick\Desktop\tax calculator\Tax-Calculator\taxTemplate.pdf"; //pdf Template location
   
             string fullName = contractors[index].FirstName + " " + contractors[index].Surname;
 
@@ -146,18 +149,16 @@ namespace TaxCalculator
             PdfReader pdfReader = new PdfReader(pdfTemplate);
             PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileStream(newFile, FileMode.Create));
             AcroFields pdfFormFields = pdfStamper.AcroFields;
-            
+            //Set all the fields to their correct values.
             pdfFormFields.SetField("EmployeeID", contractors[index].EmployeeID);
             pdfFormFields.SetField("Name", fullName);
             pdfFormFields.SetField("Department", contractors[index].Department);
             pdfFormFields.SetField("Salary", "$40,000,000");
             pdfFormFields.SetField("TaxPayable", "$2");
-            // flatten the form to remove editting options, set it to false
-            // to leave the form open to subsequent manual edits
-            pdfStamper.FormFlattening = true;
+            
+            pdfStamper.FormFlattening = true; //making the pdf fields no longer editable
 
-            // close the pdf
-            pdfStamper.Close();
+            pdfStamper.Close(); //close the PDF
         }
 
         private void btnClearAll_Click(object sender, EventArgs e)
@@ -172,14 +173,15 @@ namespace TaxCalculator
             txtDepartment.SelectedItem = " ";
             txtGender.SelectedItem = " ";
         }
-
-        private void btnQuickFill_Click(object sender, EventArgs e)
+        // Just a bunch of Quick Fill buttons to save time on typing out test examples each time. To be removed before deployment.
+        private void btnFillRick_Click(object sender, EventArgs e)
         {
             txtFirstName.Text = "Rick";
             txtSurname.Text = "Willcox";
             txtEmail.Text = "rickwillcoxau@outlook.com";
             txtDepartment.Text = "IT";
             txtGender.Text = "Male";
+            txtHourlyRate.Text = "50.50";
 
         }
 
@@ -190,6 +192,7 @@ namespace TaxCalculator
             txtEmail.Text = "ss@outlook.com";
             txtDepartment.Text = "Administration";
             txtGender.Text = "Female";
+            txtHourlyRate.Text = "80.43";
         }
 
         private void btnFillGreg_Click(object sender, EventArgs e)
@@ -199,6 +202,7 @@ namespace TaxCalculator
             txtEmail.Text = "GregWialker@outlook.com";
             txtDepartment.Text = "Customer Service";
             txtGender.Text = "Male";
+            txtHourlyRate.Text = "25";
         }
 
         private void btnFillHarry_Click(object sender, EventArgs e)
@@ -208,6 +212,22 @@ namespace TaxCalculator
             txtEmail.Text = "HarryWillcox@outlook.com";
             txtDepartment.Text = "Accounts";
             txtGender.Text = "Male";
+            txtHourlyRate.Text = "29S";
+        }
+
+        
+
+        private void txtHourlyRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
