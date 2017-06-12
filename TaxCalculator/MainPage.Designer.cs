@@ -1,4 +1,6 @@
-﻿namespace TaxCalculator
+﻿using System;
+
+namespace TaxCalculator
 {
     partial class MainPage
     {
@@ -213,6 +215,7 @@
             this.btnCalEmTax.TabIndex = 19;
             this.btnCalEmTax.Text = "Calculate Employee Tax";
             this.btnCalEmTax.UseVisualStyleBackColor = true;
+            this.btnCalEmTax.Click += new System.EventHandler(this.btnCalEmTax_Click);
             // 
             // btnCalCoTax
             // 
@@ -268,6 +271,7 @@
             this.btnFillRick.TabIndex = 24;
             this.btnFillRick.Text = "Quick Fill Rick";
             this.btnFillRick.UseVisualStyleBackColor = true;
+            this.btnFillRick.Visible = false;
             this.btnFillRick.Click += new System.EventHandler(this.btnFillRick_Click);
             // 
             // btnFillSally
@@ -278,6 +282,7 @@
             this.btnFillSally.TabIndex = 25;
             this.btnFillSally.Text = "Quick Fill Sally";
             this.btnFillSally.UseVisualStyleBackColor = true;
+            this.btnFillSally.Visible = false;
             this.btnFillSally.Click += new System.EventHandler(this.btnFillSally_Click);
             // 
             // btnFillGreg
@@ -288,6 +293,7 @@
             this.btnFillGreg.TabIndex = 26;
             this.btnFillGreg.Text = "Quick Fill Greg";
             this.btnFillGreg.UseVisualStyleBackColor = true;
+            this.btnFillGreg.Visible = false;
             this.btnFillGreg.Click += new System.EventHandler(this.btnFillGreg_Click);
             // 
             // btnFillHarry
@@ -298,6 +304,7 @@
             this.btnFillHarry.TabIndex = 27;
             this.btnFillHarry.Text = "Quick Fill Harry";
             this.btnFillHarry.UseVisualStyleBackColor = true;
+            this.btnFillHarry.Visible = false;
             this.btnFillHarry.Click += new System.EventHandler(this.btnFillHarry_Click);
             // 
             // txtHourlyRate
@@ -356,6 +363,8 @@
             this.PerformLayout();
 
         }
+
+       
 
         #endregion
 

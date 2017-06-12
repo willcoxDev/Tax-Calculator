@@ -26,20 +26,44 @@ namespace TaxCalculator
 
         int id = 1000;
 
-
+        String[] rates;
+        String[] brackets;
+ 
         public MainPage()
         {
             InitializeComponent();
-
+            // Uncomment this block to enable quick testing features, such as Quick Fill Info
+            ///*
+            btnFillGreg.Visible = true;
+            btnFillSally.Visible = true;
+            btnFillRick.Visible = true;
+            btnFillHarry.Visible = true;
+            //*/
+            //Touch nothing below this line
             txtGender.DropDownStyle = ComboBoxStyle.DropDownList; // disabling the drop down boxes text field.
             txtDepartment.DropDownStyle = ComboBoxStyle.DropDownList;
 
             txtHoursWork.Visible = false; // setting the hours worked info to not be visible on program start up
             lblHoursWork.Visible = false;
+
+            //Reading the rates.txt and assinging values into the rates and brackets arrays.
+            getRates();
         }
 
-        private void btnCreateEmployeeForm_Click(object sender, EventArgs e)
+        
+        private void getRates()
         {
+            string txtBrackets, txtRates;
+            
+            StreamReader SR = new StreamReader(@"C:\Users\Rick\Desktop\tax calculator\Tax-Calculator\Rates.txt");
+            txtBrackets = SR.ReadLine(); // Read the first line , Since there is only 2 lines no need to a loop.
+            txtRates = SR.ReadLine(); // Read the second.
+            
+            string[] stringSeparators = new string[] { ", " }; //String to split at
+            brackets = txtBrackets.Split(stringSeparators, StringSplitOptions.None); //Split each string at the seperator into an array.
+            rates = txtRates.Split(stringSeparators, StringSplitOptions.None);
+            Array.ConvertAll(brackets, Double.Parse); // Convert all the strings in the array to Double Data Type
+            Array.ConvertAll(rates, Double.Parse);
             
         }
 
@@ -60,7 +84,7 @@ namespace TaxCalculator
 
         private void btnCrtEmployee_Click(object sender, EventArgs e)
         {
-            if (txtFirstName.Text == String.Empty || txtSurname.Text == String.Empty || txtEmail.Text == String.Empty || txtGender.Text == String.Empty || txtDepartment.Text == String.Empty || txtHourlyRate.Text != String.Empty)
+            if (txtFirstName.Text == String.Empty || txtSurname.Text == String.Empty || txtEmail.Text == String.Empty || txtGender.Text == String.Empty || txtDepartment.Text == String.Empty || txtHourlyRate.Text == String.Empty)
             {
                 MessageBox.Show("Employee entry failed! \nPlease make sure all fields are filled out\nclick Create Employee once the issue is rectified");
             }
@@ -74,7 +98,7 @@ namespace TaxCalculator
                 employees[eIndex].Gender = txtGender.Text;
                 employees[eIndex].Department = txtDepartment.Text;
                 employees[eIndex].EmployeeID = "E" + id;
-                employees[eIndex].HourlyRate = int.Parse(txtHourlyRate.Text);
+                employees[eIndex].HourlyRate = decimal.Parse(txtHourlyRate.Text);
 
                 txtInformationDisplay.Clear(); //Clear the info display and display new employee
                 txtInformationDisplay.Text += "Employee Created! " +  Environment.NewLine + Environment.NewLine;
@@ -108,6 +132,7 @@ namespace TaxCalculator
                 contractors[cIndex].Email = txtEmail.Text;
                 contractors[cIndex].Gender = txtGender.Text;
                 contractors[cIndex].Department = txtDepartment.Text;
+                contractors[cIndex].HourlyRate = decimal.Parse(txtHourlyRate.Text);
                 contractors[cIndex].EmployeeID = "C" + id;
 
                 txtInformationDisplay.Clear(); //Clear the info display and display new employee
@@ -128,39 +153,97 @@ namespace TaxCalculator
             
         }
 
-        private void btnCalCoTax_Click(object sender, EventArgs e)
+        private void btnCalEmTax_Click(object sender, EventArgs e)
         {
-
-            var index = Array.FindIndex(contractors, a => a.EmployeeID == txtEmployeeID.Text); //getting the index of the contractors array that matches the employeeID entered
-
-
-            saveFilePath.FileName = "Tax Report " + contractors[index].EmployeeID + " " + contractors[index].FirstName + " " + contractors[index].Surname; //setting the file name to ID + Name
-            saveFilePath.Filter = "PDF files (*.pdf)|*.pdf|All files (*.*)|*.*";
-            saveFilePath.DefaultExt = "pdf";
-            saveFilePath.ShowDialog();
-            string newFile = saveFilePath.FileName;            
-
-            string pdfTemplate = @"C:\Users\Rick\Desktop\tax calculator\Tax-Calculator\taxTemplate.pdf"; //pdf Template location
-  
-            string fullName = contractors[index].FirstName + " " + contractors[index].Surname;
+            if (txtEmployeeID.Text == String.Empty)
+            {
+                MessageBox.Show("Operation failed\nPlease ensure that both Employee ID is correct");
+            }
+            else
+            {
+                var index = Array.FindIndex(employees, a => a.EmployeeID == txtEmployeeID.Text.ToUpper()); //getting the index of the contractors array that matches the employeeID entered
 
 
+                saveFilePath.FileName = "Tax Report " + employees[index].EmployeeID + " " + employees[index].FirstName + " " + employees[index].Surname; //setting the file name to ID + Name
+                saveFilePath.Filter = "PDF files (*.pdf)|*.pdf|All files (*.*)|*.*";
+                saveFilePath.DefaultExt = "pdf";
+                saveFilePath.ShowDialog();
+                string newFile = saveFilePath.FileName;
 
-            PdfReader pdfReader = new PdfReader(pdfTemplate);
-            PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileStream(newFile, FileMode.Create));
-            AcroFields pdfFormFields = pdfStamper.AcroFields;
-            //Set all the fields to their correct values.
-            pdfFormFields.SetField("EmployeeID", contractors[index].EmployeeID);
-            pdfFormFields.SetField("Name", fullName);
-            pdfFormFields.SetField("Department", contractors[index].Department);
-            pdfFormFields.SetField("Salary", "$40,000,000");
-            pdfFormFields.SetField("TaxPayable", "$2");
-            
-            pdfStamper.FormFlattening = true; //making the pdf fields no longer editable
+                string pdfTemplate = @"C:\Users\Rick\Desktop\tax calculator\Tax-Calculator\taxTemplate.pdf"; //pdf Template location
 
-            pdfStamper.Close(); //close the PDF
+                string fullName = employees[index].FirstName + " " + employees[index].Surname;
+
+
+
+                PdfReader pdfReader = new PdfReader(pdfTemplate);
+                PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileStream(newFile, FileMode.Create));
+                AcroFields pdfFormFields = pdfStamper.AcroFields;
+                //Set all the fields to their correct values.
+                pdfFormFields.SetField("EmployeeID", employees[index].EmployeeID);
+                pdfFormFields.SetField("Name", fullName);
+                pdfFormFields.SetField("Department", employees[index].Department);
+                pdfFormFields.SetField("Salary", "$" + (employees[index].HourlyRate) * 40);
+                pdfFormFields.SetField("TaxPayable", "$" + ((employees[index].HourlyRate) * 40 * (decimal)0.1)); //Change this to the actual tax rate.
+
+                pdfStamper.FormFlattening = true; //making the pdf fields no longer editable
+
+                pdfStamper.Close(); //close the PDF
+            }
+
         }
 
+        private void btnCalCoTax_Click(object sender, EventArgs e)
+        {
+            if(txtEmployeeID.Text == String.Empty || txtHoursWork.Text == String.Empty)
+            {
+                MessageBox.Show("Operation failed\nPlease ensure that both Employee ID and Hours Worked are correct");
+            }
+            else
+            {
+                var index = Array.FindIndex(contractors, a => a.EmployeeID == txtEmployeeID.Text.ToUpper()); //getting the index of the contractors array that matches the employeeID entered
+
+
+                saveFilePath.FileName = "Tax Report " + contractors[index].EmployeeID + " " + contractors[index].FirstName + " " + contractors[index].Surname; //setting the file name to ID + Name
+                saveFilePath.Filter = "PDF files (*.pdf)|*.pdf|All files (*.*)|*.*";
+                saveFilePath.DefaultExt = "pdf";
+                saveFilePath.ShowDialog();
+                string newFile = saveFilePath.FileName;
+
+                string pdfTemplate = @"C:\Users\Rick\Desktop\tax calculator\Tax-Calculator\taxTemplate.pdf"; //pdf Template location
+
+                string fullName = contractors[index].FirstName + " " + contractors[index].Surname;
+
+
+
+                PdfReader pdfReader = new PdfReader(pdfTemplate);
+                PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileStream(newFile, FileMode.Create));
+                AcroFields pdfFormFields = pdfStamper.AcroFields;
+                //Set all the fields to their correct values.
+                pdfFormFields.SetField("EmployeeID", contractors[index].EmployeeID);
+                pdfFormFields.SetField("Name", fullName);
+                pdfFormFields.SetField("Department", contractors[index].Department);
+                pdfFormFields.SetField("Salary", "$" + (contractors[index].HourlyRate) * decimal.Parse(txtHoursWork.Text));
+                pdfFormFields.SetField("TaxPayable", "$" + (contractors[index].HourlyRate) * decimal.Parse(txtHoursWork.Text) * contractors[index].TaxRate);
+
+                pdfStamper.FormFlattening = true; //making the pdf fields no longer editable
+
+                pdfStamper.Close(); //close the PDF
+            }
+            
+        }
+
+
+        /* 
+        private void employeeTaxRate(index)
+        {
+            int[] maxBracket = new int[5] { 25, 75, 150, 250, 300 };
+            double employeeSalary = 40 * employees[index].HourlyRate;
+            
+        }
+        */
+
+        //Clears all text fields. does not delete or remove any entered employees or contractors.
         private void btnClearAll_Click(object sender, EventArgs e)
         {
             foreach (Control x in this.Controls)
@@ -173,7 +256,11 @@ namespace TaxCalculator
             txtDepartment.SelectedItem = " ";
             txtGender.SelectedItem = " ";
         }
-        // Just a bunch of Quick Fill buttons to save time on typing out test examples each time. To be removed before deployment.
+
+
+
+        // These buttons quickly fill in information into the form so that teh developer can quickly test features. 
+        // See public mainPage() for section to uncomment to enable this.
         private void btnFillRick_Click(object sender, EventArgs e)
         {
             txtFirstName.Text = "Rick";
@@ -212,7 +299,7 @@ namespace TaxCalculator
             txtEmail.Text = "HarryWillcox@outlook.com";
             txtDepartment.Text = "Accounts";
             txtGender.Text = "Male";
-            txtHourlyRate.Text = "29S";
+            txtHourlyRate.Text = "29";
         }
 
         
@@ -229,5 +316,7 @@ namespace TaxCalculator
                 e.Handled = true;
             }
         }
+
+        
     }
 }
