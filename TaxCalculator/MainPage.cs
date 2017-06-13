@@ -11,8 +11,7 @@ using iTextSharp.text.pdf;
 using iTextSharp;
 using iTextSharp.text;
 using System.IO;
-
-
+using System.Text.RegularExpressions;
 
 namespace TaxCalculator
 {
@@ -54,15 +53,15 @@ namespace TaxCalculator
         private void getRates()
         {
             string txtBrackets, txtRates;
-            
-            StreamReader SR = new StreamReader(@"C:\Users\Rick\Desktop\tax calculator\Tax-Calculator\Rates.txt");
+            string filePath = System.IO.Path.GetFullPath("rates.txt");
+            StreamReader SR = new StreamReader(filePath);
             txtBrackets = SR.ReadLine(); // Read the first line , Since there is only 2 lines no need to a loop.
             txtRates = SR.ReadLine(); // Read the second.
             
             string[] stringSeparators = new string[] { ", " }; //String to split at
             brackets = txtBrackets.Split(stringSeparators, StringSplitOptions.None); //Split each string at the seperator into an array.
             rates = txtRates.Split(stringSeparators, StringSplitOptions.None);
-            Array.ConvertAll(brackets, Decimal.Parse); // Convert all the strings in the array to Double Data Type
+            Array.ConvertAll(brackets, Decimal.Parse); // Convert all the strings in the array to Decimal Data Type
             Array.ConvertAll(rates, Decimal.Parse);
             
         }
@@ -71,7 +70,7 @@ namespace TaxCalculator
         {
             if(txtEmployeeID.Text.ToLower().StartsWith("c")) // checking to see if the employee ID starts with e or E. 
             {
-                txtHoursWork.Visible = true; //sett the hours worked info to visible if true.
+                txtHoursWork.Visible = true; //set the hours worked info to visible if true.
                 lblHoursWork.Visible = true;
             }
             else
@@ -155,9 +154,10 @@ namespace TaxCalculator
 
         private void btnCalEmTax_Click(object sender, EventArgs e)
         {
-            if (txtEmployeeID.Text == String.Empty)
+            Regex rgx = new Regex(@"^e\d{4}$"); // Making sure the that employeeID entered in valid. e follwed by 4 digits exactly.
+            if (!rgx.IsMatch(txtEmployeeID.Text.ToLower()))
             {
-                MessageBox.Show("Operation failed\nPlease ensure that both Employee ID is correct");
+                MessageBox.Show("Operation failed\nPlease ensure that both Employee ID is correct\nFormat Employee ID: E###");
             }
             else
             {
@@ -169,17 +169,16 @@ namespace TaxCalculator
                 saveFilePath.DefaultExt = "pdf";
                 saveFilePath.ShowDialog();
                 string newFile = saveFilePath.FileName;
-
-                string pdfTemplate = @"C:\Users\Rick\Desktop\tax calculator\Tax-Calculator\taxTemplate.pdf"; //pdf Template location
+                string pdfTemplatePath = System.IO.Path.GetFullPath("taxTemplate.pdf"); //pdf Template location
 
                 string fullName = employees[index].FirstName + " " + employees[index].Surname;
 
 
 
-                PdfReader pdfReader = new PdfReader(pdfTemplate);
+                PdfReader pdfReader = new PdfReader(pdfTemplatePath);
                 PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileStream(newFile, FileMode.Create));
                 AcroFields pdfFormFields = pdfStamper.AcroFields;
-                //Set all the fields to their correct values.
+                //Set all the fields in the pdf to their correct values.
                 pdfFormFields.SetField("EmployeeID", employees[index].EmployeeID);
                 pdfFormFields.SetField("Name", fullName);
                 pdfFormFields.SetField("Department", employees[index].Department);
@@ -195,9 +194,11 @@ namespace TaxCalculator
 
         private void btnCalCoTax_Click(object sender, EventArgs e)
         {
-            if(txtEmployeeID.Text == String.Empty || txtHoursWork.Text == String.Empty)
+            Regex rgx = new Regex(@"^c\d{4}$"); // checks to match C####
+            Regex rgxHours = new Regex(@"^(\d+(\.\d{1,2})?|[.](\d{1,2})?)$"); // checks to match a valid hours worked
+            if (!rgx.IsMatch(txtEmployeeID.Text.ToLower()) || !rgxHours.IsMatch(txtHoursWork.Text))
             {
-                MessageBox.Show("Operation failed\nPlease ensure that both Employee ID and Hours Worked are correct");
+                MessageBox.Show("Operation failed\nPlease ensure that both Employee ID and Hours Worked are correct\nFormat Employee ID: C###");
             }
             else
             {
@@ -209,14 +210,14 @@ namespace TaxCalculator
                 saveFilePath.DefaultExt = "pdf";
                 saveFilePath.ShowDialog();
                 string newFile = saveFilePath.FileName;
-
-                string pdfTemplate = @"C:\Users\Rick\Desktop\tax calculator\Tax-Calculator\taxTemplate.pdf"; //pdf Template location
+                
+                string pdfTemplatePath = System.IO.Path.GetFullPath("taxTemplate.pdf"); //pdf Template location
 
                 string fullName = contractors[index].FirstName + " " + contractors[index].Surname;
 
 
 
-                PdfReader pdfReader = new PdfReader(pdfTemplate);
+                PdfReader pdfReader = new PdfReader(pdfTemplatePath);
                 PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileStream(newFile, FileMode.Create));
                 AcroFields pdfFormFields = pdfStamper.AcroFields;
                 //Set all the fields to their correct values.
