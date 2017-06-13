@@ -184,7 +184,7 @@ namespace TaxCalculator
                 pdfFormFields.SetField("Name", fullName);
                 pdfFormFields.SetField("Department", employees[index].Department);
                 pdfFormFields.SetField("Salary", "$" + (employees[index].HourlyRate) * 40);
-                pdfFormFields.SetField("TaxPayable", "$" + employees[index].TaxRate); //Change this to the actual tax rate.
+                pdfFormFields.SetField("TaxPayable", "$" + (employees[index].TaxRate).ToString("0.00")); //Display tax payable to 2 decimal places.
 
                 pdfStamper.FormFlattening = true; //making the pdf fields no longer editable
 
