@@ -62,8 +62,8 @@ namespace TaxCalculator
             string[] stringSeparators = new string[] { ", " }; //String to split at
             brackets = txtBrackets.Split(stringSeparators, StringSplitOptions.None); //Split each string at the seperator into an array.
             rates = txtRates.Split(stringSeparators, StringSplitOptions.None);
-            Array.ConvertAll(brackets, Double.Parse); // Convert all the strings in the array to Double Data Type
-            Array.ConvertAll(rates, Double.Parse);
+            Array.ConvertAll(brackets, Decimal.Parse); // Convert all the strings in the array to Double Data Type
+            Array.ConvertAll(rates, Decimal.Parse);
             
         }
 
@@ -162,7 +162,7 @@ namespace TaxCalculator
             else
             {
                 var index = Array.FindIndex(employees, a => a.EmployeeID == txtEmployeeID.Text.ToUpper()); //getting the index of the contractors array that matches the employeeID entered
-
+                employeeTaxRate(index);
 
                 saveFilePath.FileName = "Tax Report " + employees[index].EmployeeID + " " + employees[index].FirstName + " " + employees[index].Surname; //setting the file name to ID + Name
                 saveFilePath.Filter = "PDF files (*.pdf)|*.pdf|All files (*.*)|*.*";
@@ -184,7 +184,7 @@ namespace TaxCalculator
                 pdfFormFields.SetField("Name", fullName);
                 pdfFormFields.SetField("Department", employees[index].Department);
                 pdfFormFields.SetField("Salary", "$" + (employees[index].HourlyRate) * 40);
-                pdfFormFields.SetField("TaxPayable", "$" + ((employees[index].HourlyRate) * 40 * (decimal)0.1)); //Change this to the actual tax rate.
+                pdfFormFields.SetField("TaxPayable", "$" + employees[index].TaxRate); //Change this to the actual tax rate.
 
                 pdfStamper.FormFlattening = true; //making the pdf fields no longer editable
 
@@ -234,14 +234,35 @@ namespace TaxCalculator
         }
 
 
-        /* 
-        private void employeeTaxRate(index)
+        // Since an employee will always pay a certain amount once they pass a certain pay threshold, a simple if statement can be used to determine how much tax they should pay.
+        // If the tax rates change to something else this code will need to be modified.
+        private void employeeTaxRate(int index)
         {
             int[] maxBracket = new int[5] { 25, 75, 150, 250, 300 };
-            double employeeSalary = 40 * employees[index].HourlyRate;
-            
+            decimal employeeSalary = 40 * employees[index].HourlyRate;
+            if (employeeSalary >= 2000)
+            {
+                employees[index].TaxRate = maxBracket[3] + (employeeSalary - decimal.Parse(brackets[3])) * decimal.Parse(rates[4]);
+            }
+            else if (employeeSalary >= 1500 && employeeSalary < 2000)
+            {
+                employees[index].TaxRate = maxBracket[2] + (employeeSalary - decimal.Parse(brackets[2])) * decimal.Parse(rates[3]);
+            }
+            else if (employeeSalary >= 1000 && employeeSalary < 1500)
+            {
+                employees[index].TaxRate = maxBracket[1] + (employeeSalary - decimal.Parse(brackets[1])) * decimal.Parse(rates[2]);
+            }
+            else if (employeeSalary >= 500 && employeeSalary < 1000)
+            {
+                employees[index].TaxRate = maxBracket[0] + (employeeSalary - decimal.Parse(brackets[0])) * decimal.Parse(rates[1]);
+            }
+            else if (employeeSalary >= 0 && employeeSalary < 500)
+            {
+                employees[index].TaxRate = employeeSalary  * decimal.Parse(rates[0]);
+            }
+
         }
-        */
+        
 
         //Clears all text fields. does not delete or remove any entered employees or contractors.
         private void btnClearAll_Click(object sender, EventArgs e)
@@ -268,7 +289,8 @@ namespace TaxCalculator
             txtEmail.Text = "rickwillcoxau@outlook.com";
             txtDepartment.Text = "IT";
             txtGender.Text = "Male";
-            txtHourlyRate.Text = "50.50";
+            txtHourlyRate.Text = "42.50";
+            txtEmployeeID.Text = "e1000";
 
         }
 

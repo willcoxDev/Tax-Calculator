@@ -118,7 +118,7 @@ namespace TaxCalculator
             }
             set
             {
-                 //from the rates.txt depending on their weekly wage.
+                taxRate = value;
             }
         }
     }
