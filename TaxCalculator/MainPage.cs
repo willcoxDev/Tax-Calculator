@@ -34,12 +34,12 @@ namespace TaxCalculator
         {
             InitializeComponent();
             // Uncomment this block to enable quick testing features, such as Quick Fill Info
-            ///*
+            /*
             btnFillGreg.Visible = true;
             btnFillSally.Visible = true;
             btnFillRick.Visible = true;
             btnFillHarry.Visible = true;
-            //*/
+            */
             //Touch nothing below this line
             txtGender.DropDownStyle = ComboBoxStyle.DropDownList; // disabling the drop down boxes text field.
             txtDepartment.DropDownStyle = ComboBoxStyle.DropDownList;
