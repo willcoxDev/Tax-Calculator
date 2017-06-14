@@ -27,7 +27,8 @@ namespace TaxCalculator
 
         String[] rates;
         String[] brackets;
-        
+
+        Regex regEmail = new Regex(@"^(\w|\d|_)+@\w+\.\w{2,3}(\.\w{2,3})?(\.\w{2,3})?$"); // Matches most emails that are commonly used.
 
         public MainPage()
         {
@@ -84,7 +85,7 @@ namespace TaxCalculator
 
         private void btnCrtEmployee_Click(object sender, EventArgs e)
         {
-            if (txtFirstName.Text == String.Empty || txtSurname.Text == String.Empty || txtEmail.Text == String.Empty || txtGender.Text == String.Empty || txtDepartment.Text == String.Empty || txtHourlyRate.Text == String.Empty)
+            if (txtFirstName.Text == String.Empty || txtSurname.Text == String.Empty || !regEmail.IsMatch(txtEmail.Text) || txtGender.Text == String.Empty || txtDepartment.Text == String.Empty || txtHourlyRate.Text == String.Empty)
             {
                 MessageBox.Show("Employee entry failed! \nPlease make sure all fields are filled out\nclick Create Employee once the issue is rectified");
             }
@@ -118,7 +119,7 @@ namespace TaxCalculator
 
         private void btnCrtContractor_Click(object sender, EventArgs e)
         {
-
+            
             if(txtFirstName.Text == String.Empty || txtSurname.Text == String.Empty || txtEmail.Text == String.Empty || txtGender.Text == String.Empty || txtDepartment.Text == String.Empty || txtHourlyRate.Text == String.Empty)
             {
                 MessageBox.Show("Contractor entry failed! \nPlease make sure all fields are filled out\nclick Create Contractor once the issue is rectified");
@@ -203,6 +204,7 @@ namespace TaxCalculator
 
         }
 
+
         private void btnCalCoTax_Click(object sender, EventArgs e)
         {
             int index; // declaring the index as a vairble so it is not outside the scope as I am using the Try catch block.
@@ -246,7 +248,7 @@ namespace TaxCalculator
                 pdfFormFields.SetField("Name", fullName);
                 pdfFormFields.SetField("Department", contractors[index].Department);
                 pdfFormFields.SetField("Salary", "$" + (contractors[index].HourlyRate) * decimal.Parse(txtHoursWork.Text));
-                pdfFormFields.SetField("TaxPayable", "$" + (contractors[index].HourlyRate) * decimal.Parse(txtHoursWork.Text) * contractors[index].TaxRate);
+                pdfFormFields.SetField("TaxPayable", "$" + ((contractors[index].HourlyRate) * decimal.Parse(txtHoursWork.Text) * contractors[index].TaxRate).ToString("0.00"));
 
                 pdfStamper.FormFlattening = true; //making the pdf fields no longer editable
 
@@ -312,7 +314,6 @@ namespace TaxCalculator
             txtDepartment.Text = "IT";
             txtGender.Text = "Male";
             txtHourlyRate.Text = "42.50";
-            txtEmployeeID.Text = "e1000";
 
         }
 
