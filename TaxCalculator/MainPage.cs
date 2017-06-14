@@ -27,7 +27,8 @@ namespace TaxCalculator
 
         String[] rates;
         String[] brackets;
- 
+        
+
         public MainPage()
         {
             InitializeComponent();
@@ -154,6 +155,7 @@ namespace TaxCalculator
 
         private void btnCalEmTax_Click(object sender, EventArgs e)
         {
+            int index; // declaring the index as a vairble so it is not outside the scope as I am using the Try catch block.
             Regex rgx = new Regex(@"^e\d{4}$"); // Making sure the that employeeID entered in valid. e follwed by 4 digits exactly.
             if (!rgx.IsMatch(txtEmployeeID.Text.ToLower()))
             {
@@ -161,7 +163,16 @@ namespace TaxCalculator
             }
             else
             {
-                var index = Array.FindIndex(employees, a => a.EmployeeID == txtEmployeeID.Text.ToUpper()); //getting the index of the contractors array that matches the employeeID entered
+                try
+                {
+                    index = Array.FindIndex(employees, a => a.EmployeeID == txtEmployeeID.Text.ToUpper()); //getting the index of the contractors array that matches the employeeID entered
+                }
+                catch
+                {
+                    MessageBox.Show("The Employee ID you entered does not exist");
+                    return; //Leave the method.
+                }
+                
                 employeeTaxRate(index);
 
                 saveFilePath.FileName = "Tax Report " + employees[index].EmployeeID + " " + employees[index].FirstName + " " + employees[index].Surname; //setting the file name to ID + Name
@@ -194,6 +205,7 @@ namespace TaxCalculator
 
         private void btnCalCoTax_Click(object sender, EventArgs e)
         {
+            int index; // declaring the index as a vairble so it is not outside the scope as I am using the Try catch block.
             Regex rgx = new Regex(@"^c\d{4}$"); // checks to match C####
             Regex rgxHours = new Regex(@"^(\d+(\.\d{1,2})?|[.](\d{1,2})?)$"); // checks to match a valid hours worked
             if (!rgx.IsMatch(txtEmployeeID.Text.ToLower()) || !rgxHours.IsMatch(txtHoursWork.Text))
@@ -202,7 +214,16 @@ namespace TaxCalculator
             }
             else
             {
-                var index = Array.FindIndex(contractors, a => a.EmployeeID == txtEmployeeID.Text.ToUpper()); //getting the index of the contractors array that matches the employeeID entered
+                try
+                {
+                    index = Array.FindIndex(contractors, a => a.EmployeeID == txtEmployeeID.Text.ToUpper()); //getting the index of the contractors array that matches the employeeID entered
+                }
+                catch
+                {
+                    MessageBox.Show("The Employee ID you entered does not exist");
+                    return; //Leave the method.
+                }
+                
 
 
                 saveFilePath.FileName = "Tax Report " + contractors[index].EmployeeID + " " + contractors[index].FirstName + " " + contractors[index].Surname; //setting the file name to ID + Name
