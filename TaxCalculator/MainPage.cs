@@ -17,29 +17,31 @@ namespace TaxCalculator
 {
     public partial class MainPage : Form
     {
-        Employee[] employees = new Employee[3000]; //global array to store employees in
+        Employee[] employees = new Employee[300]; //global array to store employees in
         int eIndex = 0;
 
-        Contractor[] contractors = new Contractor[3000]; //global array to store contractors in
+        Contractor[] contractors = new Contractor[300]; //global array to store contractors in
         int cIndex = 0;
 
-        int id = 1000;
+        
 
         String[] rates;
         String[] brackets;
 
         Regex regEmail = new Regex(@"^(\w|\d|_)+@\w+\.\w{2,3}(\.\w{2,3})?(\.\w{2,3})?$"); // Matches most emails that are commonly used.
+        Regex regEmpE = new Regex(@"^[Ee]\d{4}$");//Matches a valid employee ID only / Employee.
+        Regex regEmpC = new Regex(@"^[Cc]\d{4}$");//Matches a valid employee ID only / Contractor.
 
         public MainPage()
         {
             InitializeComponent();
             // Uncomment this block to enable quick testing features, such as Quick Fill Info
-            /*
+            
             btnFillGreg.Visible = true;
             btnFillSally.Visible = true;
             btnFillRick.Visible = true;
             btnFillHarry.Visible = true;
-            */
+            
             //Touch nothing below this line
             txtGender.DropDownStyle = ComboBoxStyle.DropDownList; // disabling the drop down boxes text field.
             txtDepartment.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -85,9 +87,19 @@ namespace TaxCalculator
 
         private void btnCrtEmployee_Click(object sender, EventArgs e)
         {
+
             if (txtFirstName.Text == String.Empty || txtSurname.Text == String.Empty || !regEmail.IsMatch(txtEmail.Text) || txtGender.Text == String.Empty || txtDepartment.Text == String.Empty || txtHourlyRate.Text == String.Empty)
             {
-                MessageBox.Show("Employee entry failed! \nPlease make sure all fields are filled out\nclick Create Employee once the issue is rectified");
+                MessageBox.Show("Employee entry failed! \nPlease make sure all fields are filled out correctly\nclick Create Employee once the issue is rectified");
+            }
+
+            else if (alreadyExists(0))
+            {
+                MessageBox.Show("Employee ID already exists \nPlease make sure the Employee ID is correct\nclick Create Employee once the issue is rectified");
+            }
+            else if (!regEmpE.IsMatch(txtCrtEmployeeID.Text))
+            {
+                MessageBox.Show("Employee ID is Invalid  \nPlease make sure the Employee ID is correct\nFormat: E###\nClick Create Employee once the issue is rectified");
             }
             else
             {
@@ -98,7 +110,7 @@ namespace TaxCalculator
                 employees[eIndex].Email = txtEmail.Text;
                 employees[eIndex].Gender = txtGender.Text;
                 employees[eIndex].Department = txtDepartment.Text;
-                employees[eIndex].EmployeeID = "E" + id;
+                employees[eIndex].EmployeeID = txtCrtEmployeeID.Text.ToUpper();
                 employees[eIndex].HourlyRate = decimal.Parse(txtHourlyRate.Text);
 
                 txtInformationDisplay.Clear(); //Clear the info display and display new employee
@@ -112,7 +124,7 @@ namespace TaxCalculator
                 txtInformationDisplay.Text += "Hourly Rate: $" + employees[eIndex].HourlyRate;
 
                 eIndex++; //setting the index to +1 for the next time another employee is created.
-                id++; //makes the ID go up by 1 each time.
+                
             }
            
         }
@@ -122,7 +134,15 @@ namespace TaxCalculator
             
             if(txtFirstName.Text == String.Empty || txtSurname.Text == String.Empty || txtEmail.Text == String.Empty || txtGender.Text == String.Empty || txtDepartment.Text == String.Empty || txtHourlyRate.Text == String.Empty)
             {
-                MessageBox.Show("Contractor entry failed! \nPlease make sure all fields are filled out\nclick Create Contractor once the issue is rectified");
+                MessageBox.Show("Contractor entry failed! \nPlease make sure all fields are filled out correctly\nclick Create Contractor once the issue is rectified");
+            }
+            else if (alreadyExists(1))
+            {
+                MessageBox.Show("Employee ID already exists \nPlease make sure the Employee ID is correct\nclick Create Contractor once the issue is rectified");
+            }
+            else if (!regEmpC.IsMatch(txtCrtEmployeeID.Text))
+            {
+                MessageBox.Show("Employee ID is Invalid  \nPlease make sure the Employee ID is correct\nFormat: C###\nClick Create Contractor once the issue is rectified");
             }
             else
             {
@@ -134,7 +154,7 @@ namespace TaxCalculator
                 contractors[cIndex].Gender = txtGender.Text;
                 contractors[cIndex].Department = txtDepartment.Text;
                 contractors[cIndex].HourlyRate = decimal.Parse(txtHourlyRate.Text);
-                contractors[cIndex].EmployeeID = "C" + id;
+                contractors[cIndex].EmployeeID = txtCrtEmployeeID.Text.ToUpper();
 
                 txtInformationDisplay.Clear(); //Clear the info display and display new employee
                 txtInformationDisplay.Text += "Contractor Created! " + Environment.NewLine + Environment.NewLine;
@@ -148,11 +168,47 @@ namespace TaxCalculator
                 txtInformationDisplay.Text += "Tax Rate: " + (contractors[cIndex].TaxRate * 100) + "%";
 
                 cIndex++; //setting the index to +1 for the next time another contractors is created.
-                id++; //makes the ID go up by 1 each time.
+                
             }
 
             
         }
+        
+        private Boolean alreadyExists(int x)
+        {
+            if (x == 0)
+            {
+                for (var i = 0; i < employees.Length; i++)
+                {
+                    if (employees[i] != null)
+                    {
+                        if (txtCrtEmployeeID.Text.ToUpper() == employees[i].EmployeeID)
+                        {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            else
+            {
+                for (var i = 0; i < contractors.Length; i++)
+                {
+                    if (contractors[i] != null)
+                    {
+                        if (txtCrtEmployeeID.Text.ToUpper() == contractors[i].EmployeeID)
+                        {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            
+
+        }
+
+    
 
         private void btnCalEmTax_Click(object sender, EventArgs e)
         {

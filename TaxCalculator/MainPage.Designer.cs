@@ -59,6 +59,8 @@ namespace TaxCalculator
             this.btnFillHarry = new System.Windows.Forms.Button();
             this.txtHourlyRate = new System.Windows.Forms.TextBox();
             this.lblHourlyRate = new System.Windows.Forms.Label();
+            this.txtCrtEmployeeID = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // title
@@ -67,52 +69,52 @@ namespace TaxCalculator
             this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.title.Location = new System.Drawing.Point(527, 35);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(325, 54);
+            this.title.Size = new System.Drawing.Size(130, 24);
             this.title.TabIndex = 0;
             this.title.Text = "Tax Calculator";
             // 
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(274, 97);
+            this.lblFirstName.Location = new System.Drawing.Point(274, 201);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(152, 32);
+            this.lblFirstName.Size = new System.Drawing.Size(57, 13);
             this.lblFirstName.TabIndex = 1;
             this.lblFirstName.Text = "First Name";
             // 
             // lblSurname
             // 
             this.lblSurname.AutoSize = true;
-            this.lblSurname.Location = new System.Drawing.Point(274, 163);
+            this.lblSurname.Location = new System.Drawing.Point(274, 240);
             this.lblSurname.Name = "lblSurname";
-            this.lblSurname.Size = new System.Drawing.Size(130, 32);
+            this.lblSurname.Size = new System.Drawing.Size(49, 13);
             this.lblSurname.TabIndex = 2;
             this.lblSurname.Text = "Surname";
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(274, 223);
+            this.lblEmail.Location = new System.Drawing.Point(274, 278);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(87, 32);
+            this.lblEmail.Size = new System.Drawing.Size(32, 13);
             this.lblEmail.TabIndex = 3;
             this.lblEmail.Text = "Email";
             // 
             // lblGender
             // 
             this.lblGender.AutoSize = true;
-            this.lblGender.Location = new System.Drawing.Point(274, 283);
+            this.lblGender.Location = new System.Drawing.Point(274, 323);
             this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(110, 32);
+            this.lblGender.Size = new System.Drawing.Size(42, 13);
             this.lblGender.TabIndex = 4;
             this.lblGender.Text = "Gender";
             // 
             // lblDepartment
             // 
             this.lblDepartment.AutoSize = true;
-            this.lblDepartment.Location = new System.Drawing.Point(274, 343);
+            this.lblDepartment.Location = new System.Drawing.Point(274, 367);
             this.lblDepartment.Name = "lblDepartment";
-            this.lblDepartment.Size = new System.Drawing.Size(163, 32);
+            this.lblDepartment.Size = new System.Drawing.Size(62, 13);
             this.lblDepartment.TabIndex = 5;
             this.lblDepartment.Text = "Department";
             // 
@@ -121,7 +123,7 @@ namespace TaxCalculator
             this.lblEmployeeID.AutoSize = true;
             this.lblEmployeeID.Location = new System.Drawing.Point(274, 500);
             this.lblEmployeeID.Name = "lblEmployeeID";
-            this.lblEmployeeID.Size = new System.Drawing.Size(176, 32);
+            this.lblEmployeeID.Size = new System.Drawing.Size(67, 13);
             this.lblEmployeeID.TabIndex = 6;
             this.lblEmployeeID.Text = "Employee ID";
             // 
@@ -130,43 +132,43 @@ namespace TaxCalculator
             this.lblHoursWork.AutoSize = true;
             this.lblHoursWork.Location = new System.Drawing.Point(274, 556);
             this.lblHoursWork.Name = "lblHoursWork";
-            this.lblHoursWork.Size = new System.Drawing.Size(194, 32);
+            this.lblHoursWork.Size = new System.Drawing.Size(76, 13);
             this.lblHoursWork.TabIndex = 7;
             this.lblHoursWork.Text = "Hours Worked";
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(361, 94);
+            this.txtFirstName.Location = new System.Drawing.Point(361, 198);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(247, 38);
+            this.txtFirstName.Size = new System.Drawing.Size(247, 20);
             this.txtFirstName.TabIndex = 8;
             // 
             // txtSurname
             // 
-            this.txtSurname.Location = new System.Drawing.Point(361, 160);
+            this.txtSurname.Location = new System.Drawing.Point(361, 237);
             this.txtSurname.Name = "txtSurname";
-            this.txtSurname.Size = new System.Drawing.Size(247, 38);
+            this.txtSurname.Size = new System.Drawing.Size(247, 20);
             this.txtSurname.TabIndex = 9;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(361, 220);
+            this.txtEmail.Location = new System.Drawing.Point(361, 275);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(247, 38);
+            this.txtEmail.Size = new System.Drawing.Size(247, 20);
             this.txtEmail.TabIndex = 10;
             // 
             // txtHoursWork
             // 
             this.txtHoursWork.Location = new System.Drawing.Point(361, 556);
             this.txtHoursWork.Name = "txtHoursWork";
-            this.txtHoursWork.Size = new System.Drawing.Size(247, 38);
+            this.txtHoursWork.Size = new System.Drawing.Size(247, 20);
             this.txtHoursWork.TabIndex = 13;
             // 
             // txtEmployeeID
             // 
             this.txtEmployeeID.Location = new System.Drawing.Point(361, 497);
             this.txtEmployeeID.Name = "txtEmployeeID";
-            this.txtEmployeeID.Size = new System.Drawing.Size(247, 38);
+            this.txtEmployeeID.Size = new System.Drawing.Size(247, 20);
             this.txtEmployeeID.TabIndex = 14;
             this.txtEmployeeID.TextChanged += new System.EventHandler(this.txtEmployeeID_TextChanged);
             // 
@@ -183,7 +185,7 @@ namespace TaxCalculator
             this.lblInformationDisplay.AutoSize = true;
             this.lblInformationDisplay.Location = new System.Drawing.Point(857, 175);
             this.lblInformationDisplay.Name = "lblInformationDisplay";
-            this.lblInformationDisplay.Size = new System.Drawing.Size(258, 32);
+            this.lblInformationDisplay.Size = new System.Drawing.Size(96, 13);
             this.lblInformationDisplay.TabIndex = 16;
             this.lblInformationDisplay.Text = "Information Display";
             // 
@@ -236,9 +238,9 @@ namespace TaxCalculator
             "IT",
             "Administration",
             " "});
-            this.txtDepartment.Location = new System.Drawing.Point(361, 340);
+            this.txtDepartment.Location = new System.Drawing.Point(361, 364);
             this.txtDepartment.Name = "txtDepartment";
-            this.txtDepartment.Size = new System.Drawing.Size(247, 39);
+            this.txtDepartment.Size = new System.Drawing.Size(247, 21);
             this.txtDepartment.TabIndex = 21;
             // 
             // txtGender
@@ -248,9 +250,9 @@ namespace TaxCalculator
             "Male",
             "Female",
             " "});
-            this.txtGender.Location = new System.Drawing.Point(361, 280);
+            this.txtGender.Location = new System.Drawing.Point(361, 320);
             this.txtGender.Name = "txtGender";
-            this.txtGender.Size = new System.Drawing.Size(247, 39);
+            this.txtGender.Size = new System.Drawing.Size(247, 21);
             this.txtGender.TabIndex = 22;
             // 
             // btnClearAll
@@ -309,24 +311,42 @@ namespace TaxCalculator
             // 
             // txtHourlyRate
             // 
-            this.txtHourlyRate.Location = new System.Drawing.Point(361, 400);
+            this.txtHourlyRate.Location = new System.Drawing.Point(361, 407);
             this.txtHourlyRate.Name = "txtHourlyRate";
-            this.txtHourlyRate.Size = new System.Drawing.Size(247, 38);
+            this.txtHourlyRate.Size = new System.Drawing.Size(247, 20);
             this.txtHourlyRate.TabIndex = 28;
             this.txtHourlyRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHourlyRate_KeyPress);
             // 
             // lblHourlyRate
             // 
             this.lblHourlyRate.AutoSize = true;
-            this.lblHourlyRate.Location = new System.Drawing.Point(274, 403);
+            this.lblHourlyRate.Location = new System.Drawing.Point(274, 410);
             this.lblHourlyRate.Name = "lblHourlyRate";
-            this.lblHourlyRate.Size = new System.Drawing.Size(222, 32);
+            this.lblHourlyRate.Size = new System.Drawing.Size(87, 13);
             this.lblHourlyRate.TabIndex = 29;
             this.lblHourlyRate.Text = "Hourly Rate      $";
             // 
+            // txtCrtEmployeeID
+            // 
+            this.txtCrtEmployeeID.Location = new System.Drawing.Point(361, 163);
+            this.txtCrtEmployeeID.Name = "txtCrtEmployeeID";
+            this.txtCrtEmployeeID.Size = new System.Drawing.Size(247, 20);
+            this.txtCrtEmployeeID.TabIndex = 31;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(274, 166);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 13);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Employee ID";
+            // 
             // MainPage
             // 
-            this.ClientSize = new System.Drawing.Size(1158, 628);
+            this.ClientSize = new System.Drawing.Size(1174, 677);
+            this.Controls.Add(this.txtCrtEmployeeID);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblHourlyRate);
             this.Controls.Add(this.txtHourlyRate);
             this.Controls.Add(this.btnFillHarry);
@@ -418,6 +438,8 @@ namespace TaxCalculator
         private System.Windows.Forms.Button btnFillHarry;
         private System.Windows.Forms.TextBox txtHourlyRate;
         private System.Windows.Forms.Label lblHourlyRate;
+        private System.Windows.Forms.TextBox txtCrtEmployeeID;
+        private System.Windows.Forms.Label label1;
     }
 }
 
